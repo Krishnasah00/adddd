@@ -1,0 +1,19 @@
+/* Shared styles for the Drawer / Forms / Modal / Table documentation pages (cards, code blocks, option tables, tabs). */
+.cx-lead{margin:0 0 12px}.cx-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.cx-cols h3,.cx-h3{margin:0 0 6px;font-size:.95em}.cx-cols ul{margin:0;padding-left:18px;font-size:.9em;color:color-mix(in srgb,var(--text) 80%,var(--card))}
+.cx-tag{display:inline-block;padding:0 8px;border-radius:99px;font-size:.75em;font-weight:600;vertical-align:middle;margin-left:6px;background:color-mix(in srgb,#EAB308 22%,transparent);color:#A16207}
+html.dark .cx-tag{color:#FACC15}
+.cx-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}.cx-grid .btn{justify-content:center}
+.cx-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;align-items:end;margin:12px 0}
+.cx-ex{border-top:1px solid var(--border);padding:12px 0}
+.cx-ex-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;font-weight:600;font-size:.92em}
+.cx-code{margin:0;padding:12px;overflow-x:auto;border:1px solid var(--border);border-radius:var(--radius-sm);background:color-mix(in srgb,var(--text) 5%,var(--card));font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace;color:var(--text)}
+.cx-dt{width:100%;border-collapse:collapse;font-size:.88em;margin:6px 0 12px}.cx-dt th,.cx-dt td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.cx-dt th{color:var(--muted);font-size:.8em;text-transform:uppercase}.cx-dt code{font-size:.92em}
+.cx-tabs{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;border-bottom:1px solid var(--border)}
+.cx-tabs button{border:0;border-bottom:2px solid transparent;background:none;color:var(--muted);font:inherit;padding:8px 14px;cursor:pointer}
+.cx-tabs button[aria-selected=true]{color:var(--brand);border-bottom-color:var(--brand);font-weight:600}.cx-tabs button:focus-visible{outline:none;box-shadow:var(--ring)}
+.cx-status{min-height:1.4em}
+.cx-stack{display:flex;flex-direction:column;gap:var(--gap,14px)}
+.cx-list{list-style:none;margin:0;padding:0}.cx-list a{display:block;padding:10px 4px;border-bottom:1px solid var(--border);color:var(--text);text-decoration:none}.cx-list a:hover{color:var(--brand)}
+.tb-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px}.tb-controls .btn{display:inline-flex;gap:6px}

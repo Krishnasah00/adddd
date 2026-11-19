@@ -1,0 +1,20 @@
+/* AppDrawer: vanilla port of the React AppDrawer. Themed by the dashboard tokens (card, border, radius, typography). */
+.ad-root{position:fixed;inset:0;z-index:300;font-family:var(--font);font-size:var(--fs)}
+.ad-backdrop{position:absolute;inset:0;background:rgb(0 0 0/.4);animation:ad-fade .2s ease-out}
+.ad-panel{position:absolute;display:flex;flex-direction:column;box-sizing:border-box;background:var(--card);color:var(--text);box-shadow:0 20px 45px -12px rgb(0 0 0/.3);animation:ad-fade .2s ease-out;outline:none}
+.ad-left,.ad-right{top:0;height:100%;width:85vw;max-width:24rem}
+.ad-left{left:0;border-right:1px solid var(--border)}.ad-right{right:0;border-left:1px solid var(--border)}
+.ad-top,.ad-bottom{left:0;width:100%;height:70vh;max-height:420px}
+.ad-top{top:0;border-bottom:1px solid var(--border)}.ad-bottom{bottom:0;border-top:1px solid var(--border)}
+.ad-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.ad-title{margin:0;font-size:1em;font-weight:600}
+.ad-close{border:0;background:none;color:var(--muted);cursor:pointer;padding:6px;border-radius:var(--radius-sm);line-height:0}
+.ad-close:hover{background:color-mix(in srgb,var(--text) 8%,transparent);color:var(--text)}
+.ad-close:focus-visible{outline:none;box-shadow:var(--ring)}.ad-close svg{width:20px;height:20px}
+.ad-body{flex:1;overflow-y:auto;padding:16px 20px}
+.ad-foot{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;padding:16px 20px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--border)}
+.ad-root .btn-danger{background:#DC2626;border-color:#DC2626;color:#fff}
+.ad-root.ad-closing .ad-backdrop,.ad-root.ad-closing .ad-panel{opacity:0;transition:opacity .15s ease-in;animation:none}
+@keyframes ad-fade{from{opacity:0}to{opacity:1}}
+:is(html[data-animations=off],html[data-reduced=on]) .ad-root :is(.ad-backdrop,.ad-panel){animation:none}
+@media(prefers-reduced-motion:reduce){.ad-backdrop,.ad-panel{animation:none}}

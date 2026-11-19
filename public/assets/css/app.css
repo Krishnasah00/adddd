@@ -1,0 +1,23 @@
+body{margin:0;font-size:var(--fs);background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--brand)}
+:focus-visible{outline:none;box-shadow:var(--ring)}
+*,::before,::after{box-sizing:border-box}
+.muted{color:var(--muted);font-size:.9em}
+.ph{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:var(--pad)}
+.ph h1{font-size:1.5em;font-weight:700;margin:0}
+.card h2{font-size:1.05em;font-weight:600;margin:0 0 12px}
+.footer{display:flex;flex-wrap:wrap;gap:8px 16px;justify-content:space-between;padding:16px var(--pad);border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.footer a{color:var(--muted)}
+/* Scrollbars: thin, themed, hover state (WebKit/Blink pseudo-elements; scrollbar-width/color for Firefox) */
+@supports selector(::-webkit-scrollbar){
+  *::-webkit-scrollbar{width:10px;height:10px}
+  *::-webkit-scrollbar-track{background:var(--sbar-track);border-radius:99px}
+  *::-webkit-scrollbar-thumb{background:var(--sbar-thumb);border-radius:99px;border:2px solid transparent;background-clip:padding-box}
+  *::-webkit-scrollbar-thumb:hover{background:var(--sbar-thumb-hover);background-clip:padding-box;border:2px solid transparent}
+  *::-webkit-scrollbar-corner{background:transparent}
+  .sb-nav::-webkit-scrollbar{width:8px}
+}
+@supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:var(--sbar-thumb) var(--sbar-track)}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}.sb-nav{scroll-behavior:smooth}}
+html[data-animations=off],html[data-reduced=on],html[data-animations=off] .sb-nav,html[data-reduced=on] .sb-nav{scroll-behavior:auto}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}

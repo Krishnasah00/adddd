@@ -1,0 +1,51 @@
+/* AppAlert: vanilla port of appAlert.css (V1.2.2) plus the Tailwind utilities the React components used.
+   Themed through the dashboard tokens in theme.css (cards, text, borders, accent, radius, typography). */
+.aa-backdrop{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;box-sizing:border-box;background:rgb(15 23 42/.45);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);font-family:var(--font);font-size:var(--fs);animation:aa-backdrop-in 160ms ease-out forwards}
+.aa-backdrop.aa-closing{animation:aa-backdrop-out 150ms ease-in forwards}
+@keyframes aa-backdrop-in{from{opacity:0}to{opacity:1}}
+@keyframes aa-backdrop-out{from{opacity:1}to{opacity:0}}
+.aa-popup{position:relative;box-sizing:border-box;width:100%;max-width:384px;padding:20px 24px;text-align:center;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:calc(var(--radius) + 6px);box-shadow:0 20px 45px -15px rgb(15 23 42/.25);animation:aa-popup-in 220ms cubic-bezier(.22,1,.36,1) forwards}
+.aa-popup:focus{outline:none}
+.aa-popup.aa-closing{animation:aa-popup-out 150ms ease-in forwards}
+@keyframes aa-popup-in{0%{opacity:0;transform:scale(.93) translateY(6px)}60%{opacity:1;transform:scale(1.015) translateY(0)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes aa-popup-out{from{opacity:1;transform:scale(1) translateY(0)}to{opacity:0;transform:scale(.97) translateY(2px)}}
+@media(min-width:640px){.aa-popup{max-width:448px;padding:24px 32px}.aa-title{font-size:1.25em!important}}
+.aa-icon{display:flex;justify-content:center;margin-bottom:14px}
+.aa-title{margin:0;font-size:1.125em;font-weight:600;line-height:1.35;color:var(--text)}
+.aa-text{margin:8px 0 0;font-size:.94em;line-height:1.6;color:color-mix(in srgb,var(--text) 72%,var(--card))}
+.aa-actions{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px}
+.aa-btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border:0;border-radius:calc(var(--radius) - 2px);font:inherit;font-size:.9em;font-weight:600;cursor:pointer;box-shadow:var(--shadow);transition:all 150ms}
+.aa-btn:active{transform:scale(.97)}
+.aa-btn:focus-visible,.aa-close:focus-visible{outline:none;box-shadow:0 0 0 2px var(--card),0 0 0 4px var(--aa-ring,var(--brand))}
+.aa-confirm{background:var(--brand);color:var(--brand-contrast)}.aa-confirm:hover{filter:brightness(1.1)}
+.aa-confirm.aa-destructive{background:#dc2626;color:#fff;--aa-ring:#ef4444}
+.aa-cancel{background:#f1f5f9;color:#334155;--aa-ring:#94a3b8}.aa-cancel:hover{background:#e2e8f0}
+html.dark .aa-cancel{background:#334155;color:#f1f5f9}html.dark .aa-cancel:hover{background:#475569}
+.aa-cancel[data-custom]:hover{filter:brightness(.95)}
+.aa-close{position:absolute;right:12px;top:12px;padding:6px;border:0;border-radius:50%;background:none;color:#94a3b8;cursor:pointer;line-height:0}
+.aa-close:hover{background:#f1f5f9;color:#475569}html.dark .aa-close:hover{background:#334155;color:#e2e8f0}
+.aa-close svg{width:16px;height:16px}
+/* Icon family: ring draws from 12 o'clock (360ms), mark draws at 300ms (260ms), settle bounce at 560ms. */
+.aa-icon-wrap{display:flex;width:64px;height:64px;align-items:center;justify-content:center;opacity:0}
+.aa-icon-svg{width:64px;height:64px}
+.aa-icon-ring-in{animation:aa-icon-fade-in 100ms ease-out forwards,aa-icon-settle-bounce 260ms ease-out 560ms both}
+@keyframes aa-icon-fade-in{to{opacity:1}}
+@keyframes aa-icon-settle-bounce{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+.aa-icon-ring{transform:rotate(-90deg);transform-origin:26px 26px;stroke-dasharray:146;stroke-dashoffset:146;animation:aa-stroke-draw 360ms cubic-bezier(.45,0,.55,1) forwards}
+.aa-icon-draw-mark{animation:aa-stroke-draw 260ms ease-out 300ms forwards}
+.aa-icon-success-check{stroke-dasharray:34;stroke-dashoffset:34}
+.aa-icon-error-line{stroke-dasharray:24;stroke-dashoffset:24}
+.aa-icon-error-line-2{animation-delay:360ms}
+.aa-icon-warning-line{stroke-dasharray:14;stroke-dashoffset:14}
+.aa-icon-info-line{stroke-dasharray:11.5;stroke-dashoffset:11.5}
+@keyframes aa-stroke-draw{to{stroke-dashoffset:0}}
+.aa-icon-dot-pop{opacity:0;animation:aa-icon-dot-pop-in 220ms ease-out 560ms forwards}
+@keyframes aa-icon-dot-pop-in{0%{opacity:0;transform:scale(0)}60%{opacity:1;transform:scale(1.3)}100%{opacity:1;transform:scale(1)}}
+/* Reduced motion: the OS preference, or the dashboard's Appearance toggles (animations off / reduce motion). */
+@media(prefers-reduced-motion:reduce){.aa-backdrop,.aa-backdrop.aa-closing,.aa-popup,.aa-popup.aa-closing,.aa-icon-wrap,.aa-icon-ring-in,.aa-icon-ring,.aa-icon-draw-mark,.aa-icon-dot-pop{animation-duration:1ms!important;animation-delay:0ms!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}}
+:is(html[data-animations=off],html[data-reduced=on]) :is(.aa-backdrop,.aa-popup,.aa-icon-wrap,.aa-icon-ring,.aa-icon-draw-mark,.aa-icon-dot-pop){animation:none!important;stroke-dashoffset:0!important;opacity:1!important;transform:none!important}
+/* App Alert Preview card (dashboard demo) */
+.aa-demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:12px 0}
+.aa-demo{--c:var(--brand);justify-content:center;border-color:color-mix(in srgb,var(--c) 45%,var(--border));color:var(--c);background:color-mix(in srgb,var(--c) 8%,var(--card));font-weight:600}
+.aa-demo:hover{background:color-mix(in srgb,var(--c) 16%,var(--card))}
+.aa-demo-success{--c:#16a34a}.aa-demo-error{--c:#dc2626}.aa-demo-warning{--c:#d97706}.aa-demo-info{--c:#2563eb}.aa-demo-delete{--c:#dc2626}.aa-demo-muted{--c:#64748b}
